@@ -1,0 +1,43 @@
+{
+  "name": "velte",
+  "version": "1.0.4",
+  "description": "A small, fast, easy-to-use Frontend library for Modern Apps.",
+  "main": "index.js",
+  "types": "./types/velte.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:build:declaration": "tsc ./src/velte.js --declaration --allowJs --emitDeclarationOnly --outDir node_package/types",
+    "dev:build:module": "rollup src/velte.js -f es --exports named -n velte -o node_package/velte.es.js",
+    "dev:build:main": "rollup src/velte.js -f umd --exports named -n velte -o node_package/velte.umd.js",
+    "dev:build:all": "yarn dev:build:module && yarn dev:build:main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoDDy18/velte.git"
+  },
+  "keywords": [
+    "Library",
+    "Frontend",
+    "Javascript",
+    "webpack",
+    "JSX"
+  ],
+  "author": "Emmanuel Oni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RoDDy18/velte/issues"
+  },
+  "homepage": "https://github.com/RoDDy18/velte#readme",
+  "dependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/helper-module-imports": "^7.16.7",
+    "@babel/plugin-transform-react-jsx": "^7.17.12",
+    "@babel/preset-env": "^7.18.2",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-jsx-control-statements": "^4.1.2",
+    "babel-plugin-loop-optimizer": "^1.4.1",
+    "babel-plugin-macros": "^3.1.0",
+    "rimraf": "^3.0.2",
+    "snabbdom": "^3.5.0"
+  }
+}
