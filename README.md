@@ -5,8 +5,8 @@
 <a href="https://github.com/RoDDy18/velte/blob/main/LICENSE">
     <img src="https://github.com/RoDDy18/velte/blob/main/logo/velte-main.png?raw=true" alt="velte_logo"><br>
 </a>&nbsp;
-<a href="https://www.npmjs.com/@velte/core">
-    <img src="https://img.shields.io/npm/v/@laurel/core.svg?logo=npm&logoColor=fff&label=NPM+package&color=limegreen" alt="velte on npm" />
+<a href="https://www.npmjs.com/velte">
+    <img src="https://img.shields.io/npm/v/laurel.svg?logo=npm&logoColor=fff&label=NPM+package&color=limegreen" alt="velte on npm" />
 </a>&nbsp;
 <a href="https://github.com/RoDDy18/velte/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-limegreen.svg" alt="mit license" />
