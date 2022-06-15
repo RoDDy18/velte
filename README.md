@@ -2,15 +2,17 @@
 
 <p align="center">
 
+<img src="https://github.com/RoDDy18/velte/blob/main/logo/velte-main.png?raw=true" alt="velte_logo">
 <a href="https://www.npmjs.com/@velte/core">
     <img src="https://img.shields.io/npm/v/@velte/core.svg?logo=npm&logoColor=fff&label=NPM+package&color=limegreen" alt="velte on npm" />
 </a>&nbsp;
 <a href="https://github.com/RoDDy18/velte/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-limegreen.svg" alt="mit license" />
 </a>&nbsp;
+
 </p>
 
-<img src="https://github.com/RoDDy18/velte/blob/main/logo/velte-main.png?raw=true" alt="velte_logo"><br>
+<br>
 ## What is Velte?
 Velte is just another small, fast and easy-to-use frontend Javascript library with a declarative and component-based model for developing User Interfaces. velte in no way tries to reinvent the wheel, It takes the wheel and makes it easier to roll with. In summary, It's your typical modern framework or library but friendlier.
 
