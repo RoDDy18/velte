@@ -1,7 +1,7 @@
 {
   "name": "velte",
-  "version": "1.0.4",
-  "description": "A small, fast, easy-to-use Frontend library for Modern Apps.",
+  "version": "1.1.0",
+  "description": "A light(5kb), performant, easy-to-use Frontend library for Modern Apps.",
   "main": "index.js",
   "types": "./types/velte.d.ts",
   "scripts": {
@@ -19,7 +19,6 @@
     "Library",
     "Frontend",
     "Javascript",
-    "webpack",
     "JSX"
   ],
   "author": "Emmanuel Oni",
@@ -27,17 +26,8 @@
   "bugs": {
     "url": "https://github.com/RoDDy18/velte/issues"
   },
-  "homepage": "https://github.com/RoDDy18/velte#readme",
+  "homepage": "https://veltejs.cyclic.app",
   "dependencies": {
-    "@babel/core": "^7.18.2",
-    "@babel/helper-module-imports": "^7.16.7",
-    "@babel/plugin-transform-react-jsx": "^7.17.12",
-    "@babel/preset-env": "^7.18.2",
-    "babel-loader": "^8.2.5",
-    "babel-plugin-jsx-control-statements": "^4.1.2",
-    "babel-plugin-loop-optimizer": "^1.4.1",
-    "babel-plugin-macros": "^3.1.0",
-    "rimraf": "^3.0.2",
-    "snabbdom": "^3.5.0"
+    "snabbdom": "^3.5.1"
   }
 }

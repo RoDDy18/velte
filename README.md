@@ -1,4 +1,4 @@
-## velte - A small, fast, easy-to-use Frontend library for Modern Apps.
+## velte - A light(5kb), performant, easy-to-use Frontend Framework for Modern Apps.
 
 <p align="center">
 
@@ -15,39 +15,33 @@
 </p>
 
 ## What is Velte?
-Velte is just another small, fast and easy-to-use frontend Javascript library with a declarative and component-based model for developing User Interfaces. velte in no way tries to reinvent the wheel, It takes the wheel and makes it easier to roll with. In summary, It's your typical modern framework or library but friendlier.
-
-[Official Website](https://velte.netlify.app)
+Velte is a light(5kb), performant and easy-to-use frontend Javascript framework with a declarative and component-based model for developing User Interfaces. velte in no way tries to reinvent the wheel, It takes the wheel and makes it easier to roll with. In summary, It's your typical modern framework or library but friendlier.
 
 ## Installation
 Getting started with velte
-* [velte starter kit (recommended for medium projects)](https://github.com/RoDDy18/velte-starter-kit)
-* velte CLI (coming soon)
+* [velte webpack starter](https://github.com/RoDDy18/velte-webpack-starter)
+* [velte rspack starter](https://github.com/RoDDy18/velte-rspack-starter)
+* [velte vite starter](https://github.com/RoDDy18/velte-vite-starter)
+* [velte app CLI](https://www.npmjs.com/package/create-velte-app)
 
 ## Documentation
 
-Full documentation at [veltedocs.netlify.app](https://veltedocs.netlify.app)
+Full documentation at [https://veltejsdocs.cyclic.app](https://veltejsdocs.cyclic.app)
 
 
-## Velte Class Component Example
+## Velte Code Example
 
 ```jsx
-import {VelteComponent,VelteElement} from "velte"
+import { VelteElement, VelteRender } from "velte"
 
-export class GettingStarted extends VelteComponent{
-    constructor(traits){
-        super(traits)
-        this.state = {}
-    }
+const variableValue = "Velte is Awesome"
 
-    render(){
-        return(
-            <div className="card">
-                <h2 className="title"><i className="fas fa-book"></i> Getting Started</h2>
-                <p>You should read the documentation, it covers every bit of the library.</p>
-                <a href="./test.html" v-attr:role="button" className="button">Read the Docs</a>
-            </div>
-        )
-    }
-}
+const App = (
+    <div>
+        <h1>{variableValue}</h1>
+        <p>Yes, velte uses JSX</p>
+    </div>
+)
+
+VelteRender(App, document.getElementById("app"))
 ```

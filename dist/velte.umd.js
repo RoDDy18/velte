@@ -1,7 +1,7 @@
 /*
- *  velte v1.0.4
- *  A small, fast, easy-to-use Frontend library for Modern Apps.
- *  Copyright (c) 2022 Emmanuel Oni
+ *  velte v1.1.0
+ *  A light(5kb), performant, easy-to-use Frontend library for Modern Apps.
+ *  Copyright (c) 2023 Emmanuel Oni
  *  Licence - https://github.com/RoDDy18/velte/blob/main/LICENSE
  */
 
@@ -31,10 +31,11 @@
 
     var snabbdom__namespace = /*#__PURE__*/_interopNamespace(snabbdom);
 
-    var VELTE_VERSION = "1.0.4";
+    var VELTE_VERSION = "1.1.0";
 
     const VelteElement = (dom,traits={},...children)=>{
 
+        children = children.flat(2);
         traits = traits || {};
         const eventTraits = {};
         const dataTraits = {};
@@ -45,16 +46,15 @@
             if(traitKey.startsWith("v-on:")){
                 const events = traitKey.substring(5).toLowerCase();
                 eventTraits[events] = traits[traitKey];
+            }else if(traitKey == "style"){
+                styleTraits[traitKey] = traits[traitKey];
+            }else if(traitKey.startsWith("v-attr:")){
+                const attribute = traitKey.substring(7).toLowerCase();
+                attributeTraits[attribute] = traits[traitKey];
             }else {
-                if(traitKey == "style"){
-                    styleTraits[traitKey] = traits[traitKey];
-                }else if(traitKey.startsWith("v-attr:")){
-                    const attribute = traitKey.substring(7).toLowerCase();
-                    attributeTraits[attribute] = traits[traitKey];
-                }else {
-                    dataTraits[traitKey] = traits[traitKey];
-                }
+                dataTraits[traitKey] = traits[traitKey];
             }
+            
         }
         
         if(dom.prototype && dom.prototype.isVelteClassComponent){
@@ -63,10 +63,12 @@
             componentInstance.__VNode = componentInstance.render();
 
             componentInstance.__VNode.data.hook = {
-                init:()=>componentInstance.velteCreated(),
-                create:()=> componentInstance.velteMounted(),
-                update:()=> componentInstance.velteUpdated(),
-                remove:()=> componentInstance.velteDestroyed()
+                init:()=>componentInstance.onCreated(),
+                create:()=> componentInstance.onBeforeMount(),
+                insert:()=> componentInstance.onMounted(),
+                update:()=> componentInstance.onUpdated(),
+                destroy:()=> componentInstance.onBeforeUnmount(),
+                remove:()=> componentInstance.onUnmounted()
             };
             return componentInstance.__VNode
         }
@@ -95,15 +97,19 @@
             Velte.__updater(this);
         }
 
-        velteExit(){ return }
+        vExit(){ return }
 
-        velteCreated(){}
+        onCreated(){}
 
-        velteMounted(){}
+        onBeforeMount(){}
 
-        velteUpdated(){}
+        onMounted(){}
 
-        velteDestroyed(){}
+        onUpdated(){}
+
+        onBeforeUnmount(){}
+        
+        onUnmounted(){}
 
         render(){}
     }

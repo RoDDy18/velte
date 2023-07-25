@@ -1,2 +1,2 @@
-Copyright (c) 2022 Emmanuel Oni
+Copyright (c) 2023 Emmanuel Oni
 https://github.com/RoDDy18/velte/blob/main/LICENSE

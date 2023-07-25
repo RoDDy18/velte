@@ -1,7 +1,7 @@
 /*
- *  velte v1.0.4
- *  A small, fast, easy-to-use Frontend library for Modern Apps.
- *  Copyright (c) 2022 Emmanuel Oni
+ *  velte v1.1.0
+ *  A light(5kb), performant, easy-to-use Frontend library for Modern Apps.
+ *  Copyright (c) 2023 Emmanuel Oni
  *  Licence - https://github.com/RoDDy18/velte/blob/main/LICENSE
  */
 
