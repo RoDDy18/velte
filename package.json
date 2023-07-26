@@ -16,10 +16,9 @@
     "url": "git+https://github.com/RoDDy18/velte.git"
   },
   "keywords": [
-    "Library",
-    "Frontend",
-    "Javascript",
-    "JSX"
+    "framework",
+    "UI",
+    "velte"
   ],
   "author": "Emmanuel Oni",
   "license": "MIT",
