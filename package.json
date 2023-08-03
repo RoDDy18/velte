@@ -1,7 +1,7 @@
 {
   "name": "velte",
   "version": "2.0.0-alpha.0",
-  "description": "A light(5kb), performant, easy-to-use Frontend library for Modern Apps.",
+  "description": "A lightweight, performant, event-driven Frontend framework for Modern Apps.",
   "main": "index.js",
   "types": "./types/velte.d.ts",
   "scripts": {
@@ -27,6 +27,7 @@
   },
   "homepage": "https://veltejs.cyclic.app",
   "dependencies": {
-    "snabbdom": "^3.5.1"
+    "snabbdom": "^3.5.1",
+    "mergician": "^1.1.0"
   }
 }

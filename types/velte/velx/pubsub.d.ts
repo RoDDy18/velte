@@ -4,6 +4,8 @@
  *  Copyright (c) 2023 Emmanuel Oni
  *  Licence - https://github.com/RoDDy18/velte/blob/main/LICENSE
  */
-import { VNode } from "snabbdom";
-
-export function VelteRender(element: VNode, rootDomElement: HTMLElement): void;
+export default class PubSub {
+    events: {};
+    subscribe(event: any, callback?: ()=> void): any;
+    publish(event: any, data?: {}): any;
+}

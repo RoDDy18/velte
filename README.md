@@ -1,21 +1,26 @@
-## velte - A light(5kb), performant, easy-to-use Frontend Framework for Modern Apps.
+[![Velte banner](https://github.com/RoDDy18/velte/blob/main/logo/velte-banner.png?raw=true)](https://veltejs.cyclic.app)
 
-<p align="center">
+## Welcome to Velte
 
-<a href="https://github.com/RoDDy18/velte/blob/main/LICENSE">
-    <img src="https://github.com/RoDDy18/velte/blob/main/logo/velte.png?raw=true" alt="velte_logo"><br>
-</a>&nbsp;
-<a href="https://www.npmjs.com/velte">
-    <img src="https://img.shields.io/npm/v/velte.svg?logo=npm&logoColor=fff&label=NPM+package&color=limegreen" alt="velte on npm" />
-</a>&nbsp;
-<a href="https://github.com/RoDDy18/velte/blob/main/LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-limegreen.svg" alt="mit license" />
-</a>&nbsp;
+* Lightweight
+* Simple
+* Scalable
+* Event Driven
+* Performant
+* Out-of-the-box Proxy State Managment
+* Deep (recursive) Merge State Updates via [mergician](https://www.npmjs.com/package/mergician)
 
+<p>
+<a href="https://www.npmjs.com/package/velte"><img src="https://img.shields.io/npm/v/velte?logo=npm&logoColor=fff&style=flat&colorA=18181B&colorB=7446CE" alt="Version"></a>
+<a href="https://www.npmjs.com/package/velte"><img src="https://img.shields.io/npm/dm/velte?style=flat&colorA=18181B&colorB=7446CE" alt="Downloads"></a>
+<a href="https://github.com/RoDDy18/velte/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-limegreen.svg?style=flat&colorA=18181B&colorB=7446CE" alt="License"></a>
+<a href="https://veltejs.cyclic.app"><img src="https://img.shields.io/badge/Open%20Documentation-18181B" alt="Website"></a>
 </p>
 
 ## What is Velte?
-Velte is a light(5kb), performant and easy-to-use frontend Javascript framework with a declarative and component-based model for developing User Interfaces. velte in no way tries to reinvent the wheel, It takes the wheel and makes it easier to roll with. In summary, It's your typical modern framework or library but friendlier.
+Velte is a simple, lightweight and Event Driven frontend Javascript UI framework with a declarative, scalable and component-based model for developing User Interfaces. Powered by [snabbdom](https://www.npmjs.com/package/snabbdom), one of the fastest virtual DOM libraries out there, velte inherits it's splendid performance. It's modularity makes velte powerful out of the box!<br/>
+Love using snabbdom? well, think of velte as high level framework wrapped around snabbdom.<br/>
+Velte in no way tries to reinvent the wheel, It takes the wheel and makes it easier to roll with. In summary, It's your typical modern UI framework but friendlier.
 
 ## Installation
 Getting started with velte
@@ -29,7 +34,7 @@ Getting started with velte
 Full documentation at [https://veltejsdocs.cyclic.app](https://veltejsdocs.cyclic.app)
 
 
-## Velte Code Example
+## Code Example
 
 ```jsx
 import { VelteElement, VelteRender } from "velte"

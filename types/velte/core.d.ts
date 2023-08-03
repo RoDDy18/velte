@@ -1,12 +1,13 @@
 /*
- *  velte v1.1.0
- *  A light(5kb), performant, easy-to-use Frontend library for Modern Apps.
+ *  velte v2.0.0-alpha.0
+ *  A light, performant, easy-to-use Frontend framework for Modern Apps.
  *  Copyright (c) 2023 Emmanuel Oni
  *  Licence - https://github.com/RoDDy18/velte/blob/main/LICENSE
  */
+import { VNode } from "snabbdom";
 
 export const VELTE_VERSION: string;
-export function VelteElement(dom: any, traits?: {}, ...children: any[]): any;
+export function VelteElement(dom: any, traits?: {}, ...children: any[]): VNode;
 export class VelteComponent {
     constructor(traits: any);
     traits: any;
@@ -23,9 +24,17 @@ export class VelteComponent {
     render(): void;
     isVelteClassComponent: boolean;
 }
+export class useState {
+    constructor(defaultValue: any);
+    state: {
+        value: any;
+    };
+    setState(newValue: any): void;
+}
 export default Velte;
 declare namespace Velte {
     export { VelteElement };
+    export { useState };
     export { VelteComponent };
     export { VELTE_VERSION };
 }
