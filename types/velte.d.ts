@@ -1,11 +1,10 @@
 /*
- *  velte v2.0.0-alpha.0
- *  A light, performant, easy-to-use Frontend framework for Modern Apps.
+ *  velte v2.0.0-alpha.1
+ *  A lightweight, performant, event-driven Frontend framework for Modern Apps.
  *  Copyright (c) 2023 Emmanuel Oni
  *  Licence - https://github.com/RoDDy18/velte/blob/main/LICENSE
  */
 import { VNode, jsx } from "snabbdom";
-
 declare namespace _default {
     export { VelteElement };
     export { VelteComponent };

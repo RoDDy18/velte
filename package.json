@@ -1,6 +1,6 @@
 {
   "name": "velte",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0-alpha.1",
   "description": "A lightweight, performant, event-driven Frontend framework for Modern Apps.",
   "main": "index.js",
   "types": "./types/velte.d.ts",

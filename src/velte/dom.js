@@ -1,30 +1,36 @@
-import * as snabbdom from "snabbdom"
-import { propsModule, eventListenersModule, styleModule,attributesModule } from "snabbdom"
-import Velte from "./core"
+import * as snabbdom from "snabbdom";
+import {
+  propsModule,
+  eventListenersModule,
+  styleModule,
+  attributesModule,
+} from "snabbdom";
+import Velte from "./core";
 
-const reconcile = snabbdom.init([propsModule,eventListenersModule,styleModule,attributesModule], undefined, {
+const reconcile = snabbdom.init(
+  [propsModule, eventListenersModule, styleModule, attributesModule],
+  undefined,
+  {
     experimental: {
-        fragments: true
-    }
-})
+      fragments: true,
+    },
+  }
+);
 
-let rootVNode
+let rootVNode;
 
-Velte.__reconcile = reconcile
+Velte.__reconcile = reconcile;
 
-export const VelteRender = (element, rootDomElement)=>{
-    
-    if(rootVNode == null){
-        rootVNode = rootDomElement
-    }
-    rootVNode = reconcile(rootVNode, element)
-}
+export const VelteRender = (element, rootDomElement) => {
+  if (rootVNode == null) {
+    rootVNode = rootDomElement;
+  }
+  rootVNode = reconcile(rootVNode, element);
+};
 
-Velte.__updater = (componentInstance)=>{
+Velte.__updater = (componentInstance) => {
+  const oldVNode = componentInstance.__VNode;
+  const newVNode = componentInstance.render();
 
-    const oldVNode = componentInstance.__VNode
-    const newVNode = componentInstance.render()
-
-    componentInstance.__VNode = reconcile(oldVNode, newVNode)
-}
-
+  componentInstance.__VNode = reconcile(oldVNode, newVNode);
+};

@@ -2,7 +2,7 @@ import {
   VelteElement,
   VelteComponent,
   useState,
-  VELTE_VERSION,
+  VELTE_VERSION
 } from "./velte/core"
 
 import { VelteRender } from "./velte/dom"
