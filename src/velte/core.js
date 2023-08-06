@@ -5,7 +5,7 @@ import velX from "./velx/store";
 //import PubSub from "./velx/pubsub"
 //const event = new PubSub()
 
-export var VELTE_VERSION = "2.0.0-alpha.1";
+export var version = "2.0.0-alpha.2";
 
 export const VelteElement = (dom, traits = {}, ...children) => {
   children = children.flat(2);
@@ -152,107 +152,107 @@ export const VelteElement = (dom, traits = {}, ...children) => {
     VNode.data.hook = {
       init: () => {
         if (
-          traits.hook?.hasOwnProperty("onCreated") &&
-          typeof traits.hook?.onCreated === "function"
+          traits.$hook?.hasOwnProperty("onCreated") &&
+          typeof traits.$hook?.onCreated === "function"
         ) {
-          traits.hook.onCreated();
+          traits.$hook.onCreated();
         }
       },
       create: () => {
         if (
-          traits.hook?.hasOwnProperty("onBeforeMount") &&
-          typeof traits.hook?.onBeforeMount === "function"
+          traits.$hook?.hasOwnProperty("onBeforeMount") &&
+          typeof traits.$hook?.onBeforeMount === "function"
         ) {
-          traits.hook.onBeforeMount();
+          traits.$hook.onBeforeMount();
         }
       },
       insert: () => {
         if (
-          traits.hook?.hasOwnProperty("onMounted") &&
-          typeof traits.hook?.onMounted === "function"
+          traits.$hook?.hasOwnProperty("onMounted") &&
+          typeof traits.$hook?.onMounted === "function"
         ) {
-          traits.hook.onMounted();
+          traits.$hook.onMounted();
         }
       },
       update: () => {
         if (
-          traits.hook?.hasOwnProperty("onUpdated") &&
-          typeof traits.hook?.onUpdated === "function"
+          traits.$hook?.hasOwnProperty("onUpdated") &&
+          typeof traits.$hook?.onUpdated === "function"
         ) {
-          traits.hook.onUpdated();
+          traits.$hook.onUpdated();
         }
       },
       destroy: () => {
         if (
-          traits.hook?.hasOwnProperty("onBeforeUnmount") &&
-          typeof traits.hook?.onBeforeUnmount === "function"
+          traits.$hook?.hasOwnProperty("onBeforeUnmount") &&
+          typeof traits.$hook?.onBeforeUnmount === "function"
         ) {
-          traits.hook.onBeforeUnmount();
+          traits.$hook.onBeforeUnmount();
         }
       },
       remove: () => {
         if (
-          traits.hook?.hasOwnProperty("onUnmounted") &&
-          typeof traits.hook?.onUnmounted === "function"
+          traits.$hook?.hasOwnProperty("onUnmounted") &&
+          typeof traits.$hook?.onUnmounted === "function"
         ) {
-          traits.hook.onUnmounted();
+          traits.$hook.onUnmounted();
         }
       },
     };
 
     let recentVNode = null;
 
-    if (traits.store instanceof velX) {
-      traits.store.events.subscribe("stateChange", () => {
+    if (traits.$store instanceof velX) {
+      traits.$store.events.subscribe("stateChange", () => {
         const newVNode = dom(traits);
 
         newVNode.data.hook = {
           init: () => {
             if (
-              traits.hook?.hasOwnProperty("onCreated") &&
-              typeof traits.hook?.onCreated === "function"
+              traits.$hook?.hasOwnProperty("onCreated") &&
+              typeof traits.$hook?.onCreated === "function"
             ) {
-              traits.hook.onCreated();
+              traits.$hook.onCreated();
             }
           },
           create: () => {
             if (
-              traits.hook?.hasOwnProperty("onBeforeMount") &&
-              typeof traits.hook?.onBeforeMount === "function"
+              traits.$hook?.hasOwnProperty("onBeforeMount") &&
+              typeof traits.$hook?.onBeforeMount === "function"
             ) {
-              traits.hook.onBeforeMount();
+              traits.$hook.onBeforeMount();
             }
           },
           insert: () => {
             if (
-              traits.hook?.hasOwnProperty("onMounted") &&
-              typeof traits.hook?.onMounted === "function"
+              traits.$hook?.hasOwnProperty("onMounted") &&
+              typeof traits.$hook?.onMounted === "function"
             ) {
-              traits.hook.onMounted();
+              traits.$hook.onMounted();
             }
           },
           update: () => {
             if (
-              traits.hook?.hasOwnProperty("onUpdated") &&
-              typeof traits.hook?.onUpdated === "function"
+              traits.$hook?.hasOwnProperty("onUpdated") &&
+              typeof traits.$hook?.onUpdated === "function"
             ) {
-              traits.hook.onUpdated();
+              traits.$hook.onUpdated();
             }
           },
           destroy: () => {
             if (
-              traits.hook?.hasOwnProperty("onBeforeUnmount") &&
-              typeof traits.hook?.onBeforeUnmount === "function"
+              traits.$hook?.hasOwnProperty("onBeforeUnmount") &&
+              typeof traits.$hook?.onBeforeUnmount === "function"
             ) {
-              traits.hook.onBeforeUnmount();
+              traits.$hook.onBeforeUnmount();
             }
           },
           remove: () => {
             if (
-              traits.hook?.hasOwnProperty("onUnmounted") &&
-              typeof traits.hook?.onUnmounted === "function"
+              traits.$hook?.hasOwnProperty("onUnmounted") &&
+              typeof traits.$hook?.onUnmounted === "function"
             ) {
-              traits.hook.onUnmounted();
+              traits.$hook.onUnmounted();
             }
           },
         };
@@ -266,6 +266,21 @@ export const VelteElement = (dom, traits = {}, ...children) => {
       });
     }
 
+    // let stateVNode = null;
+
+    // if(traits.$state){
+    //   event.subscribe("signalStateChange", ()=>{
+    //     console.log("A state changed")
+    //     const newVNode = dom(traits);
+    //     if (stateVNode === null) {
+    //       const currentVNode = Velte.__reconcile(VNode, newVNode);
+    //       stateVNode = currentVNode;
+    //     } else {
+    //       stateVNode = Velte.__reconcile(stateVNode, newVNode);
+    //     }
+    //   })
+    // }
+
     return VNode;
   }
 
@@ -276,131 +291,69 @@ export const VelteElement = (dom, traits = {}, ...children) => {
     attrs: attributeTraits,
   };
 
-  if (traits.store instanceof velX) {
-    traits.store.events.subscribe("stateChange", () => {
-      const vh = h(dom, traitType, children);
-      vh.data.hook = {
-        init: () => {
-          if (
-            traits.hook?.hasOwnProperty("onCreated") &&
-            typeof traits.hook?.onCreated === "function"
-          ) {
-            traits.hook.onCreated();
-          }
-        },
-        create: () => {
-          if (
-            traits.hook?.hasOwnProperty("onBeforeMount") &&
-            typeof traits.hook?.onBeforeMount === "function"
-          ) {
-            traits.hook.onBeforeMount();
-          }
-        },
-        insert: () => {
-          if (
-            traits.hook?.hasOwnProperty("onMounted") &&
-            typeof traits.hook?.onMounted === "function"
-          ) {
-            traits.hook.onMounted();
-          }
-        },
-        update: () => {
-          if (
-            traits.hook?.hasOwnProperty("onUpdated") &&
-            typeof traits.hook?.onUpdated === "function"
-          ) {
-            traits.hook.onUpdated();
-          }
-        },
-        destroy: () => {
-          if (
-            traits.hook?.hasOwnProperty("onBeforeUnmount") &&
-            typeof traits.hook?.onBeforeUnmount === "function"
-          ) {
-            traits.hook.onBeforeUnmount();
-          }
-        },
-        remove: () => {
-          if (
-            traits.hook?.hasOwnProperty("onUnmounted") &&
-            typeof traits.hook?.onUnmounted === "function"
-          ) {
-            traits.hook.onUnmounted();
-          }
-        },
-      };
-      Velte.__reconcile(vh, h(dom, traitType, children));
-      //return vh
-    });
-  }
-
   const vh = h(dom, traitType, children);
   vh.data.hook = {
     init: () => {
       if (
-        traits.hook?.hasOwnProperty("onCreated") &&
-        typeof traits.hook?.onCreated === "function"
+        traits.$hook?.hasOwnProperty("onCreated") &&
+        typeof traits.$hook?.onCreated === "function"
       ) {
-        traits.hook.onCreated();
+        traits.$hook.onCreated();
       }
     },
     create: () => {
       if (
-        traits.hook?.hasOwnProperty("onBeforeMount") &&
-        typeof traits.hook?.onBeforeMount === "function"
+        traits.$hook?.hasOwnProperty("onBeforeMount") &&
+        typeof traits.$hook?.onBeforeMount === "function"
       ) {
-        traits.hook.onBeforeMount();
+        traits.$hook.onBeforeMount();
       }
     },
     insert: () => {
       if (
-        traits.hook?.hasOwnProperty("onMounted") &&
-        typeof traits.hook?.onMounted === "function"
+        traits.$hook?.hasOwnProperty("onMounted") &&
+        typeof traits.$hook?.onMounted === "function"
       ) {
-        traits.hook.onMounted();
+        traits.$hook.onMounted();
       }
     },
     update: () => {
       if (
-        traits.hook?.hasOwnProperty("onUpdated") &&
-        typeof traits.hook?.onUpdated === "function"
+        traits.$hook?.hasOwnProperty("onUpdated") &&
+        typeof traits.$hook?.onUpdated === "function"
       ) {
-        traits.hook.onUpdated();
+        traits.$hook.onUpdated();
       }
     },
     destroy: () => {
       if (
-        traits.hook?.hasOwnProperty("onBeforeUnmount") &&
-        typeof traits.hook?.onBeforeUnmount === "function"
+        traits.$hook?.hasOwnProperty("onBeforeUnmount") &&
+        typeof traits.$hook?.onBeforeUnmount === "function"
       ) {
-        traits.hook.onBeforeUnmount();
+        traits.$hook.onBeforeUnmount();
       }
     },
     remove: () => {
       if (
-        traits.hook?.hasOwnProperty("onUnmounted") &&
-        typeof traits.hook?.onUnmounted === "function"
+        traits.$hook?.hasOwnProperty("onUnmounted") &&
+        typeof traits.$hook?.onUnmounted === "function"
       ) {
-        traits.hook.onUnmounted();
+        traits.$hook.onUnmounted();
       }
     },
   };
 
-  // event.subscribe("setState", (updatedState)=>{
-  //     console.log("A local state has changed", updatedState)
-  //     Velte.__reconcile(vh, h(dom, traitType, children))
-  // })
-
   return vh;
 };
+
 
 export class VelteComponent {
   constructor(traits) {
     this.traits = traits;
     this.state = null;
 
-    if (traits.store instanceof velX) {
-      traits.store.events.subscribe("stateChange", () => Velte.__updater(this));
+    if (traits.$store instanceof velX) {
+      traits.$store.events.subscribe("stateChange", () => Velte.__updater(this));
     }
   }
 
@@ -412,10 +365,6 @@ export class VelteComponent {
     //this.state = {...this.state,...updatedState}
     this.state = mergician(this.state, updatedState);
     Velte.__updater(this);
-  }
-
-  vExit() {
-    return;
   }
 
   onCreated() {}
@@ -435,37 +384,32 @@ export class VelteComponent {
 
 VelteComponent.prototype.isVelteClassComponent = true;
 
-export class useState {
-  constructor(defaultValue) {
-    this.state = { value: defaultValue };
-
-    const handler = {
-      set: () => {
-        return false;
-      },
-    };
-
-    const data = new Proxy(this.state, handler);
-    const stateBind = this.setState.bind(this);
-    return [data, stateBind];
-  }
-  setState(newValue) {
-    if (typeof this.state.value === "object") {
-      //this.state.value = {...this.state.value, ...newValue}
-      this.state.value = mergician(this.state.value, newValue);
-      //event.publish("setState", this.state.value)
-    } else {
-      this.state.value = newValue;
-      //event.publish("setState", this.state.value)
+export const createState = (defaultValue) => {
+  let value = defaultValue;
+  const getValue = () => value;
+  let setValue;
+  if (typeof defaultValue === "object") {
+    setValue = (newValue) => {
+      value = mergician(value, newValue);
+      //event.publish("signalStateChange", value);
+      return value;
+    }
+  }else{
+    setValue = (newValue) => {
+      value = newValue;
+      //event.publish("signalStateChange", value);
+      return value;
     }
   }
+  return [getValue, setValue];
 }
+
 
 const Velte = {
   VelteElement,
-  useState,
+  createState,
   VelteComponent,
-  VELTE_VERSION,
+  version
 };
 
 export default Velte;
