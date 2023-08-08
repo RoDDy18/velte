@@ -1,5 +1,5 @@
 /*
- *  velte v2.0.0-alpha.2
+ *  velte v2.0.0-alpha.3
  *  A lightweight, performant, event-driven Frontend framework for Modern Apps.
  *  Copyright (c) 2023 Emmanuel Oni
  *  Licence - https://github.com/RoDDy18/velte/blob/main/LICENSE
@@ -159,10 +159,9 @@
     }
   }
 
-  //import PubSub from "./velx/pubsub"
-  //const event = new PubSub()
+  const event = new PubSub();
 
-  var version = "2.0.0-alpha.2";
+  var version = "2.0.0-alpha.3";
 
   const VelteElement = (dom, traits = {}, ...children) => {
     children = children.flat(2);
@@ -296,10 +295,19 @@
         init: () => componentInstance.onCreated(),
         create: () => componentInstance.onBeforeMount(),
         insert: () => componentInstance.onMounted(),
+        prepatch: () => componentInstance.onBeforeUpdate(),
         update: () => componentInstance.onUpdated(),
         destroy: () => componentInstance.onBeforeUnmount(),
         remove: () => componentInstance.onUnmounted(),
       };
+
+      return componentInstance.__VNode;
+    }
+
+    if (dom.prototype && dom.prototype.isPureVelteClassComponent) {
+      const componentInstance = new dom(traits);
+
+      componentInstance.__VNode = componentInstance.render();
 
       return componentInstance.__VNode;
     }
@@ -329,6 +337,14 @@
             typeof traits.$hook?.onMounted === "function"
           ) {
             traits.$hook.onMounted();
+          }
+        },
+        prepatch: () => {
+          if (
+            traits.$hook?.hasOwnProperty("onBeforeUpdate") &&
+            typeof traits.$hook?.onBeforeUpdate === "function"
+          ) {
+            traits.$hook.onBeforeUpdate();
           }
         },
         update: () => {
@@ -388,6 +404,14 @@
                 traits.$hook.onMounted();
               }
             },
+            prepatch: () => {
+              if (
+                traits.$hook?.hasOwnProperty("onBeforeUpdate") &&
+                typeof traits.$hook?.onBeforeUpdate === "function"
+              ) {
+                traits.$hook.onBeforeUpdate();
+              }
+            },
             update: () => {
               if (
                 traits.$hook?.hasOwnProperty("onUpdated") &&
@@ -423,21 +447,6 @@
         });
       }
 
-      // let stateVNode = null;
-
-      // if(traits.$state){
-      //   event.subscribe("signalStateChange", ()=>{
-      //     console.log("A state changed")
-      //     const newVNode = dom(traits);
-      //     if (stateVNode === null) {
-      //       const currentVNode = Velte.__reconcile(VNode, newVNode);
-      //       stateVNode = currentVNode;
-      //     } else {
-      //       stateVNode = Velte.__reconcile(stateVNode, newVNode);
-      //     }
-      //   })
-      // }
-
       return VNode;
     }
 
@@ -472,6 +481,14 @@
           typeof traits.$hook?.onMounted === "function"
         ) {
           traits.$hook.onMounted();
+        }
+      },
+      prepatch: () => {
+        if (
+          traits.$hook?.hasOwnProperty("onBeforeUpdate") &&
+          typeof traits.$hook?.onBeforeUpdate === "function"
+        ) {
+          traits.$hook.onBeforeUpdate();
         }
       },
       update: () => {
@@ -512,6 +529,14 @@
       if (traits.$store instanceof velX) {
         traits.$store.events.subscribe("stateChange", () => Velte.__updater(this));
       }
+
+      if (traits.$state === true){
+        event.subscribe("signalStateChange", ({oldValue, value})=> {
+          if(oldValue !== value){
+            Velte.__updater(this);
+          }
+        });
+      }
     }
 
     reactToState() {
@@ -519,7 +544,6 @@
     }
 
     setState(updatedState) {
-      //this.state = {...this.state,...updatedState}
       this.state = mergician__default["default"](this.state, updatedState);
       Velte.__updater(this);
     }
@@ -529,6 +553,8 @@
     onBeforeMount() {}
 
     onMounted() {}
+
+    onBeforeUpdate() {}
 
     onUpdated() {}
 
@@ -541,31 +567,55 @@
 
   VelteComponent.prototype.isVelteClassComponent = true;
 
+  class PureVelteComponent {
+    constructor(traits) {
+      this.traits = traits;
+
+      if (traits.$store instanceof velX) {
+        traits.$store.events.subscribe("stateChange", () => Velte.__updater(this));
+      }
+
+      if (traits.$state === true){
+        event.subscribe("signalStateChange", ({oldValue, value})=> {
+          if(oldValue !== value){
+            Velte.__updater(this);
+          }
+        });
+      }
+    }
+
+    render() {}
+  }
+
+  PureVelteComponent.prototype.isPureVelteClassComponent = true;
+
   const createState = (defaultValue) => {
     let value = defaultValue;
     const getValue = () => value;
     let setValue;
     if (typeof defaultValue === "object") {
       setValue = (newValue) => {
+        let oldValue = value;
         value = mergician__default["default"](value, newValue);
-        //event.publish("signalStateChange", value);
+        event.publish("signalStateChange", {oldValue, value});
         return value;
       };
     }else {
       setValue = (newValue) => {
+        let oldValue = value;
         value = newValue;
-        //event.publish("signalStateChange", value);
+        event.publish("signalStateChange", {oldValue, value});
         return value;
       };
     }
     return [getValue, setValue];
   };
 
-
   const Velte = {
     VelteElement,
     createState,
     VelteComponent,
+    PureVelteComponent,
     version
   };
 
@@ -600,6 +650,7 @@
   var velte = {
     VelteElement,
     VelteComponent,
+    PureVelteComponent,
     createState,
     velX,
     PubSub,
@@ -608,6 +659,7 @@
   };
 
   exports.PubSub = PubSub;
+  exports.PureVelteComponent = PureVelteComponent;
   exports.VelteComponent = VelteComponent;
   exports.VelteElement = VelteElement;
   exports.VelteRender = VelteRender;
