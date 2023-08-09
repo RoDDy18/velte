@@ -1,17 +1,17 @@
 [![Velte banner](https://github.com/RoDDy18/velte/blob/main/logo/velte-banner.png?raw=true)](https://veltejs.cyclic.app)
 
-## Welcome to Velte
+## Welcome to Velte 2 RC
 
 * Lightweight
 * Simple
 * Scalable
 * Event Driven
 * Performant
-* Out-of-the-box Proxy State Managment
+* Out-of-the-box Proxy State Managment (VelX)
 * Deep (recursive) Merge State Updates via [mergician](https://www.npmjs.com/package/mergician)
 
 <p>
-<a href="https://www.npmjs.com/package/velte"><img src="https://img.shields.io/npm/v/velte?logo=npm&logoColor=fff&style=flat&colorA=18181B&colorB=7446CE" alt="Version"></a>
+<a href="https://www.npmjs.com/package/velte"><img src="https://img.shields.io/badge/npm-v2.0.0%20rc.0-purple?logo=npm&logoColor=fff&style=flat&colorA=18181B&colorB=7446CE" alt="Version"></a>
 <a href="https://www.npmjs.com/package/velte"><img src="https://img.shields.io/npm/dm/velte?style=flat&colorA=18181B&colorB=7446CE" alt="Downloads"></a>
 <a href="https://github.com/RoDDy18/velte/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-limegreen.svg?style=flat&colorA=18181B&colorB=7446CE" alt="License"></a>
 <a href="https://veltejs.cyclic.app"><img src="https://img.shields.io/badge/Open%20Documentation-18181B" alt="Website"></a>
@@ -26,7 +26,7 @@ Velte in no way tries to reinvent the wheel, It takes the wheel and makes it eas
 Getting started with velte
 * [velte webpack starter](https://github.com/RoDDy18/velte-webpack-starter)
 * [velte rspack starter](https://github.com/RoDDy18/velte-rspack-starter)
-* [velte vite starter](https://github.com/RoDDy18/velte-vite-starter)
+* [velte vite starter (Experimental)](https://github.com/RoDDy18/velte-vite-starter)
 * [velte app CLI](https://www.npmjs.com/package/create-velte-app)
 
 ## Documentation

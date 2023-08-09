@@ -1,9 +1,9 @@
 /*
- *  velte v2.0.0-alpha.3
- *  A lightweight, performant, event-driven Frontend framework for Modern Apps.
+ *  velte v2.0.0-rc.0
+ *  A Lightweight, Event-driven, Performant, Frontend framework for Modern Apps.
  *  Copyright (c) 2023 Emmanuel Oni
  *  Licence - https://github.com/RoDDy18/velte/blob/main/LICENSE
- */
+*/
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('snabbdom'), require('mergician')) :
   typeof define === 'function' && define.amd ? define(['exports', 'snabbdom', 'mergician'], factory) :
@@ -87,7 +87,6 @@
       self.state = new Proxy(params.state || {}, {
         set: function (state, key, value) {
           state[key] = value;
-          console.log(value);
 
           if (self.devTools) {
             console.log(`velX: stateChange: "${key}" : ${value}`);
@@ -161,7 +160,7 @@
 
   const event = new PubSub();
 
-  var version = "2.0.0-alpha.3";
+  var version = "2.0.0-rc.0";
 
   const VelteElement = (dom, traits = {}, ...children) => {
     children = children.flat(2);

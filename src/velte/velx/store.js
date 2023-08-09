@@ -32,7 +32,6 @@ export default class velX {
     self.state = new Proxy(params.state || {}, {
       set: function (state, key, value) {
         state[key] = value;
-        console.log(value)
 
         if (self.devTools) {
           console.log(`velX: stateChange: "${key}" : ${value}`);

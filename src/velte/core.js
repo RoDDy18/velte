@@ -5,7 +5,7 @@ import velX from "./velx/store";
 import PubSub from "./velx/pubsub";
 const event = new PubSub();
 
-export var version = "2.0.0-alpha.3";
+export var version = "2.0.0-rc.0";
 
 export const VelteElement = (dom, traits = {}, ...children) => {
   children = children.flat(2);
