@@ -11,7 +11,7 @@
 * Deep (recursive) Merge State Updates via [mergician](https://www.npmjs.com/package/mergician)
 
 <p>
-<a href="https://www.npmjs.com/package/velte"><img src="https://img.shields.io/badge/npm-v2.0.0%20rc.0-purple?logo=npm&logoColor=fff&style=flat&colorA=18181B&colorB=7446CE" alt="Version"></a>
+<a href="https://www.npmjs.com/package/velte"><img src="https://img.shields.io/badge/npm-v2.0.0%20rc.1-purple?logo=npm&logoColor=fff&style=flat&colorA=18181B&colorB=7446CE" alt="Version"></a>
 <a href="https://www.npmjs.com/package/velte"><img src="https://img.shields.io/npm/dm/velte?style=flat&colorA=18181B&colorB=7446CE" alt="Downloads"></a>
 <a href="https://github.com/RoDDy18/velte/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-limegreen.svg?style=flat&colorA=18181B&colorB=7446CE" alt="License"></a>
 <a href="https://veltejs.cyclic.app"><img src="https://img.shields.io/badge/Open%20Documentation-18181B" alt="Website"></a>
