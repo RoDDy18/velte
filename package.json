@@ -1,6 +1,6 @@
 {
   "name": "velte",
-  "version": "2.0.0-rc.0",
+  "version": "2.0.0-rc.1",
   "description": "A Lightweight, Event-driven, Performant, Frontend framework for Modern Apps.",
   "main": "index.js",
   "types": "./types/velte.d.ts",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://veltejs.cyclic.app",
   "dependencies": {
-    "snabbdom": "^3.5.1",
+    "snabbdom": "3.5.1",
     "mergician": "^1.1.0"
   }
 }
